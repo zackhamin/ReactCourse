@@ -20,7 +20,17 @@ class Counter extends Component {
     // Gives a key value to each element in the array. React needs to be able to access each element.
   }
 
-  handleIncrement() {}
+  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+    // handIncrement method needs to be binded to allow for 'this' keyword to have access to it globally.
+    //  You can also use the arrow function to bypass the super and binding methods.
+  }
+  //   handleIncrement() {}
+  handleIncrement = () => {
+    this.setState({ count: (this.state.count += 1) });
+    // In React you need to set the state to update the view(UI). You cannot do it direct i.e this.state.count += 1 as a direct method.
+  };
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
